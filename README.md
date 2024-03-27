@@ -57,7 +57,11 @@ Once the token is generated, you can simply run the available api endpoints to i
 
   ![Track via AWB](https://github.com/Nikhil-Sharma-CS/XpressBeesAssignment/assets/72157075/54a5cb1c-a87d-4a8a-a9a4-d91af7a75e70)
 
+- Create Order
 
+  ![Create Order](https://github.com/Nikhil-Sharma-CS/XpressBeesAssignment/assets/72157075/d70beadd-48f9-477d-9250-d0051010d1d9)
+
+For the above api, pass the json data in request body as per the format of object class in model section!
 
 
 ## Summary
