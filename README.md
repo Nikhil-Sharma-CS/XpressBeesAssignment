@@ -46,7 +46,18 @@ Now once you have created your token, you can put it in the application.properti
 Once the token is generated, you can simply run the available api endpoints to interact with our application. Below are some examples :
 
 - Get All Courier API
+  
   ![Screenshot 2024-03-27 161629](https://github.com/Nikhil-Sharma-CS/XpressBeesAssignment/assets/72157075/2c7780a4-1095-4608-9c09-6abfc70fd214)
+
+- Get Tracking update via OrderId and ChannelId
+
+  ![Track via Id](https://github.com/Nikhil-Sharma-CS/XpressBeesAssignment/assets/72157075/6f6c3c24-5a9d-465c-98b9-f9d776bd1b9c)
+
+- Get Tracking update via AWB Number
+
+  ![Track via AWB](https://github.com/Nikhil-Sharma-CS/XpressBeesAssignment/assets/72157075/54a5cb1c-a87d-4a8a-a9a4-d91af7a75e70)
+
+
 
 
 ## Summary
