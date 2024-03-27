@@ -1,6 +1,7 @@
 package org.example.XpressBees.controller;
 
-import org.example.XpressBees.model.dto.CreateOrder;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.XpressBees.model.Order;
 import org.example.XpressBees.service.CourierService;
 import org.example.XpressBees.service.XpressBeesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 @RestController
@@ -17,7 +20,7 @@ public class CourierController {
 
     @Autowired
     CourierService courierService;
-
+    private static final Logger logger = Logger.getLogger(XpressBeesService.class.getName());
     @Autowired
     XpressBeesService xpressBeesService;
 
@@ -34,7 +37,7 @@ public class CourierController {
     }
 
     @GetMapping("/track-order-via-awb")
-    public ResponseEntity<String> trackByAwb(@RequestParam String awbNumber) throws IOException
+        public ResponseEntity<String> trackByAwb(@RequestParam String awbNumber) throws IOException
     {
         return xpressBeesService.trackByAwb(awbNumber);
     }
@@ -47,8 +50,9 @@ public class CourierController {
     }
 
     @PostMapping("/create-order")
-    public ResponseEntity<String> createXpressBeesOrder(@RequestBody CreateOrder createOrder) throws IOException {
-        return xpressBeesService.createXpressBeesOrder(createOrder);
+    public ResponseEntity<String> createXpressBeesOrder(@RequestBody Order order) throws IOException {
+
+        return xpressBeesService.createXpressBeesOrder(order);
     }
 }
 

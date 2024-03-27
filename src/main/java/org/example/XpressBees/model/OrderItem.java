@@ -12,8 +12,8 @@ public class OrderItem {
     public String name;
     public String sku;
     public int units;
-    public double sellingPrice;
-    public String discount;
-    public String tax;
+    public int selling_price;
+    public int discount;
+    public int tax;
     public int hsn;
 }
