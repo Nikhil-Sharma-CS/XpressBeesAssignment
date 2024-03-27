@@ -1,6 +1,6 @@
 package org.example.XpressBees.controller;
 
-import org.example.XpressBees.model.dto.createOrder;
+import org.example.XpressBees.model.dto.CreateOrder;
 import org.example.XpressBees.service.CourierService;
 import org.example.XpressBees.service.XpressBeesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ public class CourierController {
     }
 
     @PostMapping("/create-order")
-    public ResponseEntity<String> createXpressBeesOrder(@RequestBody createOrder createOrder) throws IOException {
+    public ResponseEntity<String> createXpressBeesOrder(@RequestBody CreateOrder createOrder) throws IOException {
         return xpressBeesService.createXpressBeesOrder(createOrder);
     }
 }

@@ -3,15 +3,15 @@ package org.example.XpressBees.model.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.example.XpressBees.model.Customer;
 import org.example.XpressBees.model.OrderItem;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class createOrder {
+public class CreateOrder {
     String orderId;
     String pickupLocation;
     String channelId;
@@ -27,4 +27,5 @@ public class createOrder {
     double breadth;
     double height;
     double weight;
+    Customer customer;
 }

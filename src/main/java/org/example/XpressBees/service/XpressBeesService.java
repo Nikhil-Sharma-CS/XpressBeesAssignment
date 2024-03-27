@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import okhttp3.*;
 import org.example.XpressBees.model.Customer;
 import org.example.XpressBees.model.OrderItem;
-import org.example.XpressBees.model.dto.createOrder;
+import org.example.XpressBees.model.dto.CreateOrder;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -31,12 +31,12 @@ public class XpressBeesService {
     private final Gson gson = new Gson();
 
     //---------------------------------------------------------------------------------------------------------------------
-    public ResponseEntity<String> createXpressBeesOrder(createOrder createOrder) throws IOException {
+    public ResponseEntity<String> createXpressBeesOrder(CreateOrder createOrder) throws IOException {
 
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         MediaType mediaType = MediaType.parse("application/json");
 
-        String json = createXpressBeesOrderJson(createOrder.getOrderId(), createOrder.getPickupLocation(),createOrder.getChannelId(), createOrder.getComment(),  createOrder.getOrderItems(), createOrder.getPaymentMethod(),createOrder.getShippingCharges(), createOrder.getGiftwrapCharges(),createOrder.getTransactionCharges(), createOrder.getTotalDiscount(), createOrder.getSubTotal(), createOrder.getLength(), createOrder.getBreadth(), createOrder.getHeight(), createOrder.getWeight());
+        String json = createXpressBeesOrderJson(createOrder.getOrderId(), createOrder.getPickupLocation(),createOrder.getChannelId(), createOrder.getComment(),  createOrder.getOrderItems(), createOrder.getPaymentMethod(),createOrder.getShippingCharges(), createOrder.getGiftwrapCharges(),createOrder.getTransactionCharges(), createOrder.getTotalDiscount(), createOrder.getSubTotal(), createOrder.getLength(), createOrder.getBreadth(), createOrder.getHeight(), createOrder.getWeight(), createOrder);
 
         RequestBody body = RequestBody.create(mediaType, json);
 
@@ -65,7 +65,7 @@ public class XpressBeesService {
                                              double shippingCharges, double giftwrapCharges,
                                              double transactionCharges, double totalDiscount,
                                              double subTotal, double length, double breadth,
-                                             double height, double weight) {
+                                             double height, double weight, CreateOrder createOrder) {
         Map<String, Object> orderData = new HashMap<>();
         List<Map<String, Object>> orderItemsList = new ArrayList<>();
         // Order details
@@ -86,17 +86,17 @@ public class XpressBeesService {
         }
 
         // Billing information
-        orderData.put("billing_customer_name", customer.getName());
-        orderData.put("billing_address", customer.getAddress());
-        if (customer.getAddress2() != null && !customer.getAddress2().isEmpty()) {
-            orderData.put("billing_address_2", customer.getAddress2());
+        orderData.put("billing_customer_name", createOrder.getCustomer().getName());
+        orderData.put("billing_address", createOrder.getCustomer().getAddress());
+        if (createOrder.getCustomer().getAddress2() != null && !createOrder.getCustomer().getAddress2().isEmpty()) {
+            orderData.put("billing_address_2", createOrder.getCustomer().getAddress2());
         }
-        orderData.put("billing_city", customer.getCity());
-        orderData.put("billing_pincode", customer.getPincode());
-        orderData.put("billing_state", customer.getState());
-        orderData.put("billing_country", customer.getCountry());
-        orderData.put("billing_email", customer.getEmail());
-        orderData.put("billing_phone", customer.getPhone());
+        orderData.put("billing_city", createOrder.getCustomer().getCity());
+        orderData.put("billing_pincode", createOrder.getCustomer().getPincode());
+        orderData.put("billing_state", createOrder.getCustomer().getState());
+        orderData.put("billing_country", createOrder.getCustomer().getCountry());
+        orderData.put("billing_email", createOrder.getCustomer().getEmail());
+        orderData.put("billing_phone", createOrder.getCustomer().getPhone());
 
         // Shipping information (set to billing by default)
         orderData.put("shipping_is_billing", true);
